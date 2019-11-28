@@ -1,0 +1,46 @@
+drop database if exists Tienda;
+
+create database Tienda;
+
+use Tienda;
+
+drop table if exists Cliente;
+
+drop table if exists Venta;
+
+
+
+create table Cliente ( 
+id bigint not null AUTO_INCREMENT, 
+direccion varchar (255), 
+nombreusuario varchar(255), 
+password varchar (255), 
+primary key (id))ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+create table Venta (
+id_venta bigint not null AUTO_INCREMENT, 
+fechaVenta date,
+descuento varchar(4),
+id_cliente bigint not null, 
+primary key(id_venta))ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+alter table Venta add constraint fk_venta_idCliente foreign key (id_cliente) references Cliente (id);
+
+create table LineaDeCompra (
+id_lineaDeCompra bigint not null AUTO_INCREMENT,
+id_producto bigint not null,
+id_venta bigint not null,
+precioProducto float,
+primary key(id_lineaDeCompra))ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+create table Producto (
+id_producto bigint not null AUTO_INCREMENT,
+nombreProducto varchar(255),
+precio float,
+stock bigint)
+primary key(id_producto))ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+alter table LineaDeCompra
+
+
+
